@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌸</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #fff0f6;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #d6336c;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      background-color: #f783ac;
+      color: white;
+      cursor: pointer;
+    }
+
+    .flower {
+      position: absolute;
+      font-size: 2rem;
+      animation: fall 5s linear infinite;
+      pointer-events: none;
+    }
+
+    #kitten {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 120px;
+    display: none;
+    animation: popIn 0.6s ease-in-out;
+    }
+
+    @keyframes popIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+    }
+
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1> Here <3 </h1>
+  <button onclick="makeItRain()">Click 🌸</button>
+<img id="kitten" src="Cat.png" alt="cute kitten with flowers" />
+
+  <script>
+    function makeItRain() {
+        document.getElementById("kitten").style.display = "block";
+
+      for (let i = 0; i < 60; i++) {
+        const flower = document.createElement('div');
+        flower.classList.add('flower');
+        flower.style.left = Math.random() * 100 + 'vw';
+        flower.style.top = '-2rem';
+        flower.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        flower.textContent = '🌸';
+        document.body.appendChild(flower);
+
+        // Remove after animation
+        setTimeout(() => {
+          flower.remove();
+        }, 6000);
+      }
+    }
+  </script>
+</body>
+</html>
